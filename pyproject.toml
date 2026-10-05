@@ -1,0 +1,13 @@
+[project]
+name = "faker-cust-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "faker>=40.40.0",
+    "fastapi[standard]>=0.142.2",
+    "psycopg2>=2.9.13",
+    "pydantic>=2.13.5",
+    "sqlalchemy>=2.1.3",
+]
