@@ -1,15 +1,24 @@
 from faker import Faker
 from datetime import date
 
-from fastapi import FastAPI, Query, APIRouter
+from fastapi import Query, APIRouter, Depends
+from main import verify_api_key
 
 Faker.seed(1234)
 fake = Faker('en_US')
 
-router = APIRouter(prefix="/customers", tags=["customers"])
+router = APIRouter(
+    prefix="/customers", 
+    tags=["customers"],
+    dependencies=[Depends(verify_api_key)],
+)
+
 
 @router.get("/fake_customers")
-def get_fake_customers(num: int = Query(default=1, ge=1, le=20)):
+def get_fake_customers(
+            num: int = Query(default=1, ge=1, le=20),
+            api_key: str = Depends(verify_api_key)
+    ):
     cust_to_return = []
     for i in range(num):
         cust_to_return.append(
