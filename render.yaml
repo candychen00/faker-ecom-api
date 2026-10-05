@@ -1,0 +1,20 @@
+databases:
+  - name: my-db
+    databaseName: mydb
+    user: myuser
+    plan: free
+
+services:
+  - type: web
+    name: my-fastapi-app
+    runtime: python
+    plan: free
+    buildCommand: pip install uv && uv sync --frozen --no-dev
+    startCommand: uv run --no-sync uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: my-db
+          property: connectionString
