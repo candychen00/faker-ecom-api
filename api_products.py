@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from starlette import status
 from auth import verify_api_key
 
@@ -11,7 +11,11 @@ from schema import ProductCreate
 import random
 
 
-router = APIRouter(prefix="/products", tags=["products"])
+router = APIRouter(
+    prefix="/products", 
+    tags=["products"],
+    dependencies=[Depends(verify_api_key)],
+)
 
 
 @router.get("/tables", status_code=status.HTTP_200_OK)
