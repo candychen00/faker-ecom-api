@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    container_name: faker-ecom-fastapi
+    restart: always
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: faker-ecom-fastapi
+    ports:
+      - "5435:5432"
+    volumes:
+      - faker-ecom-fastapi:/var/lib/postgresql/data
+
+volumes:
+  faker-ecom-fastapi:
