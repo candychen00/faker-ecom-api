@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from starlette import status
+from auth import verify_api_key
 
 from models import products
 

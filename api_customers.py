@@ -2,7 +2,7 @@ from faker import Faker
 from datetime import date
 
 from fastapi import Query, APIRouter, Depends
-from main import verify_api_key
+from auth import verify_api_key
 
 Faker.seed(1234)
 fake = Faker('en_US')
