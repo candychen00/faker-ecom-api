@@ -15,7 +15,7 @@ def get_fake_customers(num: int = Query(default=1, ge=1, le=20)):
         cust_to_return.append(
             {
                 "customer_id": fake.uuid4(),
-                'name': fake.name().replace(" ", ""),
+                'name': fake.name(),
                 'email': fake.email(),
                 'state': fake.state(),
                 'signup_date': fake.date_between(start_date= date(2026, 1, 1), end_date=date(2026, 6, 30)),
