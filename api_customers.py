@@ -16,7 +16,7 @@ router = APIRouter(
 
 @router.get("/fake_customers")
 def get_fake_customers(
-            num: int = Query(default=1, ge=1, le=20),
+            num: int = Query(default=1, ge=1, le=50),
             api_key: str = Depends(verify_api_key)
     ):
     cust_to_return = []
